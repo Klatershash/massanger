@@ -1,0 +1,170 @@
+<!doctype html>
+{% load custom_filters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body{
+            display: flex;
+        }
+        .sidebar{
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            height: 100vh;
+            position: fixed
+        }
+        .sidebar a{
+            display: block;
+            padding: 0px 15px;
+            margin-bottom: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold
+        }
+        .sidebar a:hover{
+            background-color: #e2e6ea;
+            color: #0056b3;
+
+        }
+        .active{
+         background-color: #e2e6ea;
+            color: #0056b3;
+        }
+        .content{
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .sidebar ul{
+            list-style: none;
+            padding: 0
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a>{{request.session.user}}</a>
+         <a href="/profile">Профиль</a>
+        <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#createChatModal">Создать чат</a>
+       <a href="/logout" class="nav-link">Выход</a>
+        <ul>
+        {% for chat in chats %}
+            <li>
+
+                <a href="/chat/{{chat.id}}" {% if chat.id|str_text in request.path %} class="active" {% endif %}>
+                    <img src="/media/{{chat.avatar}}" style="width: 40px;height: 40px;border-radius: 50%">
+                    {{chat.name}}
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+    </div>
+    <div class="content">
+        <div class="mt-5">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+   <!-- Modal auth-->
+  <div class="modal fade" id="createChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Создание чата</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+           <form method="POST" action="/create_chat" enctype="multipart/form-data" class="mt-3">
+                {% csrf_token %}
+               <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Название</label>
+                        <input type="text" class="form-control" id="name" name="title" placeholder="Название" required>
+                      </div>
+                       <div class="mb-3">
+                        <label for="description" class="form-label">Описание</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Описание" required>
+                      </div>
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Загрузить  </label>
+                      <input class="form-control" type="file" name="file" id="formFile"  required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <input type="submit" class="btn btn-primary" value="Создать">
+                </div>
+           </form>
+      </div>
+    </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/audio.js"></script>
+<script>
+    let mediaRecorder;
+let audioChunks = [];
+
+document.getElementById('recordButton').addEventListener('click', async()=> {
+    if(mediaRecorder && mediaRecorder.state === 'recording'){
+        mediaRecorder.stop();
+        document.getElementById('recordButton').textContent = 'Старт';
+
+    }else{
+        document.getElementById('recordButton').textContent = 'Остановить';
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            const strem = await navigator.mediaDevices.getUserMedia({audio: true});
+            mediaRecorder = new MediaRecorder(strem);
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, {type: 'audio/wav'});
+                audioChunks = [];
+                const reader = new FileReader();
+                reader.readAsDataURL(audioBlob);
+                reader.onloadend = () => {
+                    const audioBase64 = reader.result.split(',')[1];
+                    const audioPlayback = document.getElementById('audioPlayback');
+                    audioPlayback.src = reader.result;
+                    audioPlayback.style.display = 'block';
+
+                    const data = {
+                        message: '',
+                        user: '{{request.session.user}}',
+                        chat: '{{chat.id}}',
+                        file: `data:audio/wav;base64,${audioBase64}`,
+                        filename: 'audio_message.wav'
+                    };
+                    $.ajax({
+                        url: '/ajaxAddAudio',
+                        method: 'POST',
+                        dataType: 'html',
+                        data:data,
+                        success: function(response){
+                        console.log(response);
+                              $('#chatContainer').append(response);
+
+                        }
+                    });
+
+                };
+            };
+            mediaRecorder.start();
+        }else{
+            alert('Браузер не поддреживает медиа!')
+        }
+    }
+});
+</script>
+</body>
+</html>

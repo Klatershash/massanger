@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+        <span class="fs-4"><ya-tr-span data-index="1-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Pricing example" data-translation="Пример ценообразования" data-ch="0" data-type="trSpan" data-selected="false" style="visibility: inherit !important;">Messenger</ya-tr-span></span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#"><ya-tr-span data-index="2-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Features" data-translation="Характеристики" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></a>
+        {% if not 'user' in request.session %}
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#"><ya-tr-span data-index="3-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Enterprise" data-translation="Предприятие" data-ch="0" data-type="trSpan" style="visibility: inherit !important;" data-bs-toggle="modal" data-bs-target="#regModal">Регистрация</ya-tr-span></a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#"><ya-tr-span data-index="4-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Support" data-translation="Поддержка" data-ch="0" data-type="trSpan" style="visibility: inherit !important;" data-bs-toggle="modal" data-bs-target="#authModal">Авторизация</ya-tr-span></a>
+        {% else %}
+          <a class="py-2 link-body-emphasis text-decoration-none" href="/profile"><ya-tr-span data-index="5-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Pricing" data-translation="Цены" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Личный кабинет</ya-tr-span></a>
+         <a class="py-2 link-body-emphasis text-decoration-none p-3" href="/logout"><ya-tr-span data-index="5-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Pricing" data-translation="Цены" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Выход</ya-tr-span></a>
+
+        {% endif %}
+      </nav>
+    </div>
+
+
+  </header>
+
+  <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Free" data-translation="Бесплатно" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">СТарт</ya-tr-span></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="9-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="$0" data-translation="0 долларов" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">0 руб.</ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="9-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">/ месяц</ya-tr-span></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><ya-tr-span data-index="10-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="10 users included" data-translation="включено 10 пользователей" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">10 Чатов</ya-tr-span></li>
+              <li><ya-tr-span data-index="11-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="2 GB of storage" data-translation="2 ГБ памяти" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2 ГБ памяти</ya-tr-span></li>
+              <li><ya-tr-span data-index="12-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Email support" data-translation="Поддержка по электронной почте" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">-</ya-tr-span></li>
+              <li><ya-tr-span data-index="13-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Help center access" data-translation="Доступ к справочному центру" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">-</ya-tr-span></li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary"><ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Sign up for free" data-translation="Зарегистрируйтесь бесплатно" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Купить</ya-tr-span></button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Pro" data-translation="Профессиональный" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Масимальный</ya-tr-span></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="16-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="$15" data-translation="15 долларов " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1000 руб. </ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="16-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">/ месяц</ya-tr-span></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><ya-tr-span data-index="17-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="20 users included" data-translation="включено 20 пользователей" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">20 чатов</ya-tr-span></li>
+              <li><ya-tr-span data-index="18-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="10 GB of storage" data-translation="10 ГБ памяти" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">20 ГБ памяти</ya-tr-span></li>
+              <li><ya-tr-span data-index="19-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Priority email support" data-translation="Приоритетная поддержка по электронной почте" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">- медиа файлы</ya-tr-span></li>
+              <li><ya-tr-span data-index="20-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Help center access" data-translation="Доступ к справочному центру" data-ch="1" data-type="trSpan" style="visibility: inherit !important;">-</ya-tr-span></li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary"><ya-tr-span data-index="21-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Get started" data-translation="Начало работы" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Купить</ya-tr-span></button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal"><ya-tr-span data-index="22-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Enterprise" data-translation="Предприятие" data-ch="1" data-type="trSpan" style="visibility: inherit !important;">Премиум</ya-tr-span></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="23-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="$29" data-translation="29 долларов" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2000 руб.</ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="23-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">/ месяц</ya-tr-span></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><ya-tr-span data-index="24-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="30 users included" data-translation="включено 30 пользователей" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">безлимит</ya-tr-span></li>
+              <li><ya-tr-span data-index="25-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="15 GB of storage" data-translation="15 ГБ памяти" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">безлимит</ya-tr-span></li>
+              <li><ya-tr-span data-index="26-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Phone and email support" data-translation="Поддержка по телефону и электронной почте" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Пбезлит</ya-tr-span></li>
+              <li><ya-tr-span data-index="27-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Help center access" data-translation="Доступ к справочному центру" data-ch="1" data-type="trSpan" style="visibility: inherit !important;">техподдержка</ya-tr-span></li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary"><ya-tr-span data-index="28-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Contact us" data-translation="Связаться с нами" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Купить</ya-tr-span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-body-secondary"><ya-tr-span data-index="39-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="© 2017–2024" data-translation="© 2017–2024" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">© 2017–2024</ya-tr-span></small>
+      </div>
+      <div class="col-6 col-md">
+        <h5><ya-tr-span data-index="40-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Features" data-translation="Характеристики" data-ch="1" data-type="trSpan" style="visibility: inherit !important;">Характеристики</ya-tr-span></h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="41-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Cool stuff" data-translation="Классная штука" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Классная штука</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="42-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Random feature" data-translation="Случайная функция" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Случайная функция</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="43-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Team feature" data-translation="Командная функция" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Командная функция</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="44-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Stuff for developers" data-translation="Материалы для разработчиков" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Материалы для разработчиков</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="45-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Another one" data-translation="Еще один" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Еще один</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="46-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Last time" data-translation="Последний раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Последний раз</ya-tr-span></a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5><ya-tr-span data-index="47-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Resources" data-translation="Ресурсы" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Ресурсы</ya-tr-span></h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="48-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Resource" data-translation="Ресурс" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Ресурс</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="49-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Resource name" data-translation="Название ресурса" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Название ресурса</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="50-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Another resource" data-translation="Другой ресурс" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Другой ресурс</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="51-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Final resource" data-translation="Конечный ресурс" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Конечный ресурс</ya-tr-span></a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5><ya-tr-span data-index="52-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="About" data-translation="О нас" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">О нас</ya-tr-span></h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="53-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Team" data-translation="Команда" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Команда</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="54-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Locations" data-translation="Адреса" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Адреса</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="55-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Privacy" data-translation="Конфиденциальность" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Конфиденциальность</ya-tr-span></a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><ya-tr-span data-index="56-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Terms" data-translation="Условия" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Условия</ya-tr-span></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Регистрация</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Авторизация</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal reg -->
+  <div class="modal fade" id="regModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Регистрация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% csrf_token %}
+          <div class="alert1 alert-warning fade show" style="display: none"></div>
+          <div class="mb-3">
+            <label for="login" class="form-label">Login</label>
+            <input type="text" class="form-control" id="login" placeholder="login">
+          </div>
+           <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="login">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary" id="reg_modal">Зарегистрироваться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal auth-->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert2 alert alert-warning fade show" style="display: none"></div>
+          <div class="mb-3">
+            <label for="login1" class="form-label">Login</label>
+            <input type="text" class="form-control" id="login1" placeholder="login">
+          </div>
+           <div class="mb-3">
+            <label for="password1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password1" placeholder="Password">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary" id="auth_modal">Авторизироваться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $('#auth_modal').on('click', function(){
+        let login = $('#login1').val();
+        let password = $('#password1').val();
+        let token = $('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+          url: '/ajaxAuth',
+          method: 'post',
+          dataType: 'html',
+          data: {csrfmiddlewaretoken: token, login: login,password:password },
+          success: function(data){
+             if(data == 1){
+               $('.alert2').show();
+              $('.alert2').addClass('alert-success');
+              $('.alert2').removeClass('alert-danger');
+              $('.alert2').text('Вы успешно авторизированы!');
+              setTimeout(function(){
+                document.location.href = '/profile';
+              }, 2000);
+            }else{
+            $('.alert2').show();
+              $('.alert2').addClass('alert-danger');
+              $('.alert2').removeClass('alert-success');
+              $('.alert2').text('Ошибка авторизации!');
+            }
+          }
+        });
+      });
+
+      $('#reg_modal').on('click', function(){
+        let login = $('#login').val();
+        let password = $('#password').val();
+        let token = $('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+          url: '/ajaxReg',
+          method: 'post',
+          dataType: 'html',
+          data: {csrfmiddlewaretoken: token, login: login,password:password },
+          success: function(data){
+            if(data == 1 || data == 2 || data == 3){
+              $('.alert1').show();
+              $('.alert1').addClass('alert-danger');
+              $('.alert1').removeClass('alert-success');
+
+            }
+            if(data == 1){
+              $('.alert1').text('Логин меньше 5 символов!');
+            }
+            if(data == 2){
+              $('.alert1').text('Пароль меньше 5 символов!');
+            }
+            if(data == 3){
+              $('.alert1').text('Такой логин уже существует!');
+            }
+            if(data == 4){
+               $('.alert1').show();
+              $('.alert1').addClass('alert-success');
+              $('.alert1').removeClass('alert-danger');
+              $('.alert1').text('Вы успешно зарегистрировались!');
+            }
+          }
+
+
+
+        });
+
+      });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

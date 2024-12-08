@@ -1,0 +1,38 @@
+{% extends 'lk/base.html' %}
+{% block title %} Настройки {% endblock %}
+
+{% block content %}
+
+<h2>Профиль </h2>
+{% if error != '' %}
+<div class="alert2 alert alert-warning fade show" >{{error}}</div>
+{% endif %}
+<form method="POST" action="/update_password">
+    {% csrf_token %}
+  <div class="mb-3">
+     <label for="password_old" class="form-label">Старый пароль</label>
+    <input type="password" name="password_old" class="form-control" id="password_old" placeholder="Старый пароль">
+  </div>
+  <div class="mb-3">
+    <label for="password_new" class="form-label">Новый пароль</label>
+    <input type="password" name="password_new" class="form-control" id="password_new" placeholder="Новый пароль">
+  </div>
+  <button type="submit" class="btn btn-primary">Обновить</button>
+</form>
+
+<form method="POST" action="/update_avatar" enctype="multipart/form-data" class="mt-3">
+{% csrf_token %}
+<h3>Загрузить аватарку</h3>
+<div class="mb-3">
+    {% if user.avatar %}
+        <img src="/media/{{user.avatar}}" width="150px">
+    {% else %}
+        <img src="/static/default_avatar.png" width="150px">
+    {% endif %}
+  <label for="formFile" class="form-label">Загрузить аватарку</label>
+  <input class="form-control" type="file" name="file" id="formFile" style="display: none">
+</div>
+      <button type="submit" class="btn btn-primary">Обновить</button>
+
+</form>
+{% endblock %}

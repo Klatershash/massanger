@@ -1,0 +1,26 @@
+.chat-container{
+    border: 1px solid #ccc;
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.message{
+    margin-bottom: 10px
+}
+.message .user{
+    font-weight: bold;
+}
+.message .text{
+    display: inline-block;
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 5px
+}
+.message-input{
+    margin-top: 15px
+}
+.datetime{
+    display: block;
+    font-size: 10px;
+    color: #000
+}

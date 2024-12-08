@@ -1,0 +1,55 @@
+{% extends 'lk/base.html' %}
+{% block title %} Настройки {% endblock %}
+
+{% block content %}
+    <h2>{{chat.name}}</h2>
+    <div class="container my-5">
+        <h3 class="text-align">Чат сообщений</h3>
+        {% if request.session.user == chat.admin.login %}
+            <a class="nav-link" href="#">Управление чатом</a>
+        {% else %}
+
+
+        {% endif %}
+
+        <div class="chat-container" id="chatContainer">
+            {% for m in messages %}
+                {% if m.user.login == request.session.user %}
+                    <div class="message" style="text-align: right">
+                        <span class="user">{{m.user.login}}</span>
+                        {% if m.file != '' %} <br /> {% endif %}
+                        <span class="text"  >
+                            {% if m.file != '' %}
+                                <audio id="audioPlayback" src="/media/{{m.file}}" controls></audio>
+                            {% endif %}<br />
+                            {{m.text}}
+
+                        </span>
+                        <span class="datetime">{{m.create_at}}</span>
+                    </div>
+                {% else %}
+                    <div class="message">
+                        <span class="user">{{m.user.login}}</span>
+                        {% if m.file != '' %} <br /> {% endif %}
+                        <span class="text">
+                             {% if m.file != '' %}
+                                <audio id="audioPlayback" src="/media/{{m.file}}" controls></audio>
+                            {% endif %}<br />
+                            {{m.text}}
+                        </span>
+                        <span class="datetime">{{m.create_at}}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="message-input">
+            <input type="text" class="form-control enter_click" id="messageInput" placeholder="Введите сообщение">
+            {% csrf_token %}
+            <audio id="audioPlayback" style="display: none" controls></audio>
+            <input type="file" class="form-control mt-3" name="file" id="file">
+            <button class="btn btn-secondary mt-2" id="recordButton">Старт</button>
+            <button  class="btn btn-primary mt-2" onclick="sendMessage({{chat.id}}, '{{request.session.user}}')">Отправить</button>
+        </div>
+    </div>
+
+{% endblock %}

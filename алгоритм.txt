@@ -1,0 +1,22 @@
+pip install django
+django-admin startproject __
+python manage.py startapp __
+settings.py в списке INSTALLED_APPS добавляем созданные приложения, меняем язык и временную зону
+прописывем путь для медиа () и статических файлов в urls.py
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+подключаем urls.py приложения app
+    path('', include('app.urls'))
+
+создание суперпользователя
+запуск
+
+
+фреймворк bootstrap (css)
+
+
+создание моделей (работа с базой данных) User (login, password...), Chat (name, file, image...), Message (text, date ...)
+Создание моделей в models.py
+
+Главаная страница
